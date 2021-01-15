@@ -26,7 +26,6 @@ export class NgImageRowsComponent implements OnInit {
         src: string
     }[];
     @Input() margin: number;
-    @Input() scrollBarWidth: number;
     @Input() targetWidth: number;
 
     @HostListener('window:resize') onResize() {
@@ -36,14 +35,20 @@ export class NgImageRowsComponent implements OnInit {
     constructor(private element: ElementRef) { }
 
     ngOnInit(): void {
-        this.updateImageSize(this.scrollBarWidth);
+        this.updateImageSize();
+    }
+
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.updateImageSize();
+        }, 250);
     }
 
 
 
 
-    updateImageSize(scrollBarWidth = 0): void {
-        const parentWidth = this.element.nativeElement.clientWidth - scrollBarWidth;
+    updateImageSize(): void {
+        const parentWidth = this.element.nativeElement.offsetWidth;
         const eachWidth = this.targetWidth - (this.margin * 2);
         const imagesPerRow = Math.floor(parentWidth / eachWidth);
         const totalMarginSpace = imagesPerRow * (this.margin * 2);
