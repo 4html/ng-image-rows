@@ -2,5 +2,46 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "ng-image-rows": {
+      "projectType": "library",
+      "root": "projects/ng-image-rows",
+      "sourceRoot": "projects/ng-image-rows/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-image-rows/tsconfig.lib.json",
+            "project": "projects/ng-image-rows/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-image-rows/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-image-rows/src/test.ts",
+            "tsConfig": "projects/ng-image-rows/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-image-rows/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-image-rows/tsconfig.lib.json",
+              "projects/ng-image-rows/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "ng-image-rows"
 }

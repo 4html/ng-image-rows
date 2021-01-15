@@ -1,0 +1,9 @@
+
+ng-image-rows {
+    display: block;
+}
+
+ng-image-rows > a > img {
+    height: auto;
+    width: 0;
+}
