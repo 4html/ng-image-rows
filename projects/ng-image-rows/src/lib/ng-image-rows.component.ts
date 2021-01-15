@@ -23,8 +23,7 @@ export class NgImageRowsComponent implements OnInit {
     @Input() images: {
         alt?: string,
         href?: string,
-        src: string,
-        link?: string
+        src: string
     }[];
     @Input() margin: number;
     @Input() scrollBarWidth: number;

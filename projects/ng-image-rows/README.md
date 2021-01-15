@@ -1,24 +1,42 @@
-# NgImageRows
+# <ng-image-rows>
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.4.
+---
 
-## Code scaffolding
+Pass in properties to construct images evenly in rows.
+The **ng-image-element** element does the following:
 
-Run `ng generate component component-name --project ng-image-rows` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-image-rows`.
-> Note: Don't forget to add `--project ng-image-rows` or else it will be added to the default project in your `angular.json` file. 
+1. Contructs each link and image.
+2. Gets the current parent width.
+3. Determines how many images should fit in that space (using the targetWidth and margin).
+4. Sets the images to a division of the row width to make the row flush.
 
-## Build
+---
 
-Run `ng build ng-image-rows` to build the project. The build artifacts will be stored in the `dist/` directory.
+    import { NgImageRowsModule } from 'ng-image-rows';
 
-## Publishing
+---
 
-After building your library with `ng build ng-image-rows`, go to the dist folder `cd dist/ng-image-rows` and run `npm publish`.
+    <ng-image-rows
+        margin="20"
+        scrollBarWidth="17"
+        targetWidth="270"
+        [images]="[
+            {
+                alt: '..',
+                href: '..',
+                src: '..'
+            }
+        ]
+    ></ng-image-rows>
 
-## Running unit tests
+---
 
-Run `ng test ng-image-rows` to execute the unit tests via [Karma](https://karma-runner.github.io).
+####Live Example:
 
-## Further help
+https://greatearthgallery.com
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Resize the home page and see how the thumbnails fit into justified rows.
+The images wrap as inline-block.
+Without this library there would often be extra space on the right breaking the symmetry of the grid.
+
+---
